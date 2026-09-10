@@ -16,16 +16,21 @@
                 <span class="logo-text">Desky Eza Pratama</span>
             </div>
             
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#pendidikan">Pendidikan</a></li>
                     <li><a href="#pengalaman">Pengalaman Kerja</a></li>
                     <li><a href="#home">Tentang Saya</a></li>
+                    <li class="mobile-only"><a href="#kontak" class="btn-contact-mobile">Kontak</a></li>
                 </ul>
             </nav>
             
-            <a href="#kontak" class="btn-contact">Kontak</a>
+            <a href="#kontak" class="btn-contact desktop-only">Kontak</a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </header>
         
         <main>
@@ -183,5 +188,29 @@
             <p>&copy; 2026 Desky Eza Pratama. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('open');
+            menuToggle.classList.toggle('open', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            menuToggle.innerHTML = isOpen
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+    </script>
 </body>
 </html>
