@@ -88,6 +88,21 @@ nav a.active::after {
     background-color: #333333;
 }
 
+.mobile-only {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--primary-black);
+    cursor: pointer;
+    padding: 8px;
+    z-index: 20;
+}
+
 /* --- Hero Section --- */
 .hero {
     display: flex;
@@ -434,19 +449,245 @@ footer {
     border-top: 1px solid #eaeaea;
 }
 
-/* Responsive */
+/* ================= Responsive ================= */
+
+/* Tablet & below */
 @media (max-width: 992px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
+    .container {
+        padding: 20px 30px;
     }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
     .hero-left, .hero-right {
         max-width: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
+    .divider {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-card {
+        max-width: 480px;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .contact-info li {
+        justify-content: center;
+    }
+
     .contact-container {
         flex-direction: column;
+    }
+
+    .image-wrapper {
+        width: 300px;
+        height: 380px;
+    }
+
+    .card-back {
+        width: 250px;
+        height: 330px;
+    }
+
+    .main-img {
+        width: 240px;
+        height: 320px;
+    }
+}
+
+/* Mobile nav takes over */
+@media (max-width: 768px) {
+    header {
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        left: 0;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+        z-index: 10;
+    }
+
+    nav.open {
+        max-height: 400px;
+        opacity: 1;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 14px 20px;
+    }
+
+    nav a.active::after {
+        display: none;
+    }
+
+    nav a.active {
+        color: var(--primary-teal);
+    }
+
+    .mobile-only {
+        display: block;
+        margin-top: 6px;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 6px;
+    }
+
+    .btn-contact-mobile {
+        display: inline-block;
+        background-color: var(--primary-black);
+        color: white;
+        text-decoration: none;
+        padding: 8px 26px;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .hero-left h1 {
+        font-size: 32px;
+    }
+
+    .hero-left .desc {
+        text-align: left;
+    }
+
+    .section-block {
+        padding: 25px 20px;
+        margin-bottom: 40px;
+        border-radius: 12px;
+    }
+
+    .section-title h2 {
+        font-size: 20px;
+    }
+
+    .box-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .timeline {
+        padding-left: 10px;
+    }
+
+    .timeline-item {
+        padding-left: 10px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 18px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
+    .hero-left h1 {
+        font-size: 26px;
+    }
+
+    .hero-left .desc {
+        font-size: 13.5px;
+    }
+
+    .contact-card {
+        padding: 20px 18px;
+    }
+
+    .contact-info li {
+        font-size: 13px;
+    }
+
+    .image-wrapper {
+        width: 240px;
+        height: 310px;
+    }
+
+    .shape-black {
+        width: 70px;
+        height: 70px;
+    }
+
+    .shape-teal {
+        width: 110px;
+        height: 110px;
+    }
+
+    .card-back {
+        width: 200px;
+        height: 270px;
+        top: 15px;
+        left: 30px;
+    }
+
+    .main-img {
+        width: 190px;
+        height: 260px;
+        left: 15px;
+    }
+
+    .badge {
+        bottom: 50px;
+        right: 5px;
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+
+    .box-header h3 {
+        font-size: 16px;
+    }
+
+    .job-desc {
+        padding-left: 15px;
+    }
+
+    .detail-item {
+        align-items: flex-start;
     }
 }
